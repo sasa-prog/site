@@ -1,5 +1,6 @@
 import { client } from "../../libs/client";
 import styles from "../../styles/Home.module.scss";
+import Image from "next/image";
 
 //SSG
 export const getStaticProps = async (context) => {
@@ -32,7 +33,7 @@ export default function BlogId({ blog }) {
             <p className={styles.publishedAt}>{blog.publishedAt}</p>
             <p className={styles.publishedAt}>ホーム&gt;{blog.category}</p>
             <div><h3 dangerouslySetInnerHTML={{__html: `${blog.subtitle}`}}  className={styles.subtitle}></h3></div>
-            <img src={blog.thumbnail.url} width="800" />
+            <Image src={blog.thumbnail.url} width={800} />
             
             <div dangerouslySetInnerHTML={{__html:`${blog.body}`}} className={styles.post}></div>
         </main>
