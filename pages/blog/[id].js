@@ -31,7 +31,7 @@ export default function BlogId({ blog }) {
             <h1 className={styles.title}>{blog.title}</h1>
             <p className={styles.publishedAt}>{blog.publishedAt}</p>
             <p className={styles.publishedAt}>ホーム&gt;{blog.category}</p>
-            <div dangerouslySetInnerHTML={{__html: `${blog.subtitle}`}} className={styles.subtitle}></div>
+            <div><h3 dangerouslySetInnerHTML={{__html: `${blog.subtitle}`}}  className={styles.subtitle}></h3></div>
             <img src={blog.thumbnail.url} width="800" />
             
             <div dangerouslySetInnerHTML={{__html:`${blog.body}`}} className={styles.post}></div>
