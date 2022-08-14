@@ -1,15 +1,14 @@
 import { client } from "../../libs/client";
 import styles from "../../styles/Home.module.scss";
-import Image from "next/image";
-
 //SSG
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
-
+  
   return {
     props: {
       blog: data,
+      
     },
   };
 };
@@ -25,15 +24,15 @@ export const getStaticPaths = async () => {
 };
 
 export default function BlogId({ blog }) {
-    
+    console.log(blog);
     return (
         
         <main className={styles.main}>
             <h1 className={styles.title}>{blog.title}</h1>
             <p className={styles.publishedAt}>{blog.publishedAt}</p>
-            <p className={styles.publishedAt}>ホーム&gt;{blog.category}</p>
+            <p className={styles.publishedAt}>ホーム&gt;{blog.category.name}</p>
             <div><h3 dangerouslySetInnerHTML={{__html: `${blog.subtitle}`}}  className={styles.subtitle}></h3></div>
-            <Image src={blog.thumbnail.url} width={800} />
+            <img src={blog.thumbnail.url} width="800" height="565"/>
             
             <div dangerouslySetInnerHTML={{__html:`${blog.body}`}} className={styles.post}></div>
         </main>
