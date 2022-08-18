@@ -20,7 +20,12 @@ export default function Home({ blog,categories }) {
     <div>
       <nav className={styles.nav}>
         <ul className={styles.ul}>
-        {categories.map((category) => (
+          <li className={styles.li}>
+            <Link href="/">
+              <a href="" className={styles.a}>ホーム</a>
+            </Link>
+          </li>
+          {categories.map((category) => (
             <li key={category.id} className={styles.li}>
               <Link href="">
                 <a href="" className={styles.a}>{category.name}</a>

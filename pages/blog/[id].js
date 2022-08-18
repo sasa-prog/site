@@ -1,14 +1,15 @@
+import Link from "next/link";
 import { client } from "../../libs/client";
 import styles from "../../styles/Home.module.scss";
 //SSG
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
-  
+  const data2 = await client.get({endpoint: "categories"});
   return {
     props: {
       blog: data,
-      
+      categories: data2.contents
     },
   };
 };
@@ -23,9 +24,26 @@ export const getStaticPaths = async () => {
   };
 };
 
-export default function BlogId({ blog }) {
-    console.log(blog);
+export default function BlogId({ blog ,categories}) {
+    
     return (
+      <div>
+        <nav className={styles.nav}>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <Link href="/">
+              <a href="" className={styles.a}>ホーム</a>
+            </Link>
+          </li>
+          {categories.map((category) => (
+            <li key={category.id} className={styles.li}>
+              <Link href="">
+                <a href="" className={styles.a}>{category.name}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
         
         <main className={styles.main}>
             <h1 className={styles.title}>{blog.title}</h1>
@@ -36,6 +54,6 @@ export default function BlogId({ blog }) {
             
             <div dangerouslySetInnerHTML={{__html:`${blog.body}`}} className={styles.post}></div>
         </main>
-        
+      </div>
     )
 }
