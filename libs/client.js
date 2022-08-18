@@ -5,4 +5,3 @@ export const client  = createClient({
     apiKey: "716edcc52a6f493dba8e18ee43dcb68523b2",
 });
 
- 
