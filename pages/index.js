@@ -40,7 +40,8 @@ export default function Home({ blog,categories }) {
         </ul>
       </nav>
       {blog.map((blog) => (
-          <Link href={`blog/${blog.id}`}>
+        <li key={blog.id}>
+          <Link href={`blog/${blog.id}`} >
             <a href="">
               <div >
               <img src={blog.thumbnail.url} with="320" height="240" className={styles.thumbnailBlock}/><br/>
@@ -48,7 +49,7 @@ export default function Home({ blog,categories }) {
               </div>
             </a>
           </Link>
-        
+        </li>
       ))}
     </div>
   );
