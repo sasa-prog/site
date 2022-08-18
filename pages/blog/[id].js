@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { client } from "../../libs/client";
 import styles from "../../styles/Home.module.scss";
+import Head from "next/head";
 //SSG
 export const getStaticProps = async (context) => {
   const id = context.params.id;
@@ -13,6 +14,8 @@ export const getStaticProps = async (context) => {
     },
   };
 };
+
+
 
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
@@ -28,6 +31,10 @@ export default function BlogId({ blog ,categories}) {
     
     return (
       <div>
+        <Head>
+          <title>{blog.title}</title>
+
+        </Head>
         <nav className={styles.nav}>
         <ul className={styles.ul}>
           <li className={styles.li}>

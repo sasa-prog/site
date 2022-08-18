@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { client } from "../libs/client";
 import styles from "../styles/Home.module.scss";
 
@@ -18,6 +19,10 @@ export default function Home({ blog,categories }) {
   
   return (
     <div>
+      <Head>
+          <title>SASA-Blog</title>
+          
+        </Head>
       <nav className={styles.nav}>
         <ul className={styles.ul}>
           <li className={styles.li}>
