@@ -42,7 +42,7 @@ export default function Home({ blog,categories }) {
       <div>
       {blog.map((blog) => (
         
-            <article className={styles.postCard}>
+            <article className={styles.postCard} key={blog.id}>
               <Link href={`blog/${blog.id}`} >
                 <a href="">
                     <img src={blog.thumbnail.url} with="320" height="240" className={styles.thumbnailBlock}/><br/>
