@@ -21,7 +21,7 @@ export default function Home({ blog,categories }) {
     <div>
       <Head>
           <title>SASA-Blog</title>
-          
+          <meta name="google-site-verification" content="EZOA_KmNa7DBPlLSRxKRch0r_fLXTq7M19L9cIcBtJI" />
         </Head>
       <header className={styles.nav}>
       <nav>
