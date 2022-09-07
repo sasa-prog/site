@@ -23,7 +23,8 @@ export default function Home({ blog,categories }) {
           <title>SASA-Blog</title>
           
         </Head>
-      <nav className={styles.nav}>
+      <header className={styles.nav}>
+      <nav>
         <ul className={styles.ul}>
           <li className={styles.li}>
             <Link href="/">
@@ -38,7 +39,7 @@ export default function Home({ blog,categories }) {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav></header>
       <div>
       {blog.map((blog) => (
         
