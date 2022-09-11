@@ -44,7 +44,7 @@ export default function BlogId({ blog ,categories}) {
           </li>
           {categories.map((category) => (
             <li key={category.id} className={styles.li}>
-              <Link href="">
+              <Link href={`/category/${category.id}`}>
                 <a href="" className={styles.a}>{category.name}</a>
               </Link>
             </li>
