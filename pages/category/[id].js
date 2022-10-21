@@ -43,7 +43,7 @@ export default function CategoryId({ category1, categories, blogs }) {
     return (
         <div>
 	<Head>
-	    <title>{category1.name}</title>
+	    <title>{category1.name} -SASA-Blog</title>
 	</Head>
 	<nav className={styles.nav}>
           	    <ul className={styles.ul}>

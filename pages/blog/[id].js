@@ -32,8 +32,8 @@ export default function BlogId({ blog ,categories}) {
     return (
       <div>
         <Head>
-          <title>{blog.title}</title>
-
+          <title>{blog.title} -SASA-Blog</title>
+          <meta name="description" content={blog.metadescription}></meta>
         </Head>
         <nav className={styles.nav}>
         <ul className={styles.ul}>
@@ -43,11 +43,13 @@ export default function BlogId({ blog ,categories}) {
             </Link>
           </li>
           {categories.map((category) => (
-            <li key={category.id} className={styles.li}>
-              <Link href={`/category/${category.id}`}>
-                <a href="" className={styles.a}>{category.name}</a>
-              </Link>
-            </li>
+            <div className={styles.liwrapper}>
+              <li key={category.id} className={styles.li}>
+                <Link href={`/category/${category.id}`}> 
+                  <a href="" className={styles.a}>{category.name}</a>
+                </Link>
+              </li>
+            </div>
           ))}
         </ul>
       </nav>
