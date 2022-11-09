@@ -1,16 +1,21 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {client} from "../../libs/client"
 
-type post ={
-    id: string,
-    publishedAt: string
+class post {
+    id = "";
+    publishedAt = "";
+
+    constructor (id,publishedAt) {
+        this.id = id;
+        this.publishedAt = publishedAt;
+    }
 }
 
-const generateSitemap = (posts: post[], location: string): string =>{
+function generateSitemap(posts, location){
     let xml = ""
 
     posts.map(post=>{
-        const postDate: string = new Date(post.publishedAt).toISOString().split("T")[0]
+        const postDate = new Date(post.publishedAt).toISOString().split("T")[0]
         const postUrl = location + post.id
 
 
@@ -38,12 +43,9 @@ export const getStaticProps = async () => {
   };
 
 export default function sitemap({blogs}) {
-    let posts:post[] = new Array()
+    let posts = new Array()
     blogs.map(blog =>{
-        const post:post ={
-            id: blog.id,
-            publishedAt: blog.publichedAt
-        } 
+        const post = new post(blog.id, blog.publishedAt)
         posts.push(post)
     })
 
