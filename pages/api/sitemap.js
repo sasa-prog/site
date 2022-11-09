@@ -1,5 +1,15 @@
-import {NextApiRequest, NextApiResponse} from "next";
 import {client} from "../../libs/client"
+
+
+export const getStaticProps = async () => {
+    const data = await client.get({ endpoint: "blog" });
+    
+    return {
+      props: {
+        blogs: data.contents
+      },
+    };
+};
 
 class post {
     id = "";
@@ -32,17 +42,9 @@ function generateSitemap(posts, location){
             </urlset>`
 }
 
-export const getStaticProps = async () => {
-    const data = await client.get({ endpoint: "blog" });
-    
-    return {
-      props: {
-        blogs: data.contents
-      },
-    };
-  };
 
-export default function sitemap({blogs}) {
+
+export default function sitemap({ blogs }) {
     let posts = new Array()
     blogs.map(blog =>{
         const post = new post(blog.id, blog.publishedAt)
