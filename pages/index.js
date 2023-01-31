@@ -3,14 +3,16 @@ import Head from "next/head";
 import { client } from "../libs/client";
 import styles from "../styles/Home.module.scss";
 
+import Nav from '../components/Nav';
+
 //SSG
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
-  const data2 = await client.get({endpoint: "categories"});
+  const blog_data = await client.get({ endpoint: "blog" });
+  const categories_data = await client.get({endpoint: "categories"});
   return {
     props: {
-      blog: data.contents,
-      categories: data2.contents
+      blog: blog_data.contents,
+      categories: categories_data.contents
     },
   };
 };
@@ -22,25 +24,11 @@ export default function Home({ blog,categories }) {
       <Head>
           <title>SASA-Blog</title>
           <meta name="google-site-verification" content="EZOA_KmNa7DBPlLSRxKRch0r_fLXTq7M19L9cIcBtJI" />
-	  <meta name="description" content="プログラミングなどの情報を発信するブログサイト。" />
+	        <meta name="description" content="プログラミングなどの情報を発信するブログサイト。" />
         </Head>
-      <header className={styles.nav}>
-      <nav>
-        <ul className={styles.ul}>
-          <li className={styles.li}>
-            <Link href="/">
-              <a href="" className={styles.a}>ホーム</a>
-            </Link>
-          </li>
-          {categories.map((category) => (
-            <li key={category.id} className={styles.li}>
-              <Link href={`/category/${category.id}`}>
-                <a href="" className={styles.a}>{category.name}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav></header>
+      <header>
+        <Nav categories={categories}/>
+      </header>
       <div>
       {blog.map((blog) => (
         
