@@ -38,7 +38,7 @@ export default function BlogId({ blog ,categories}) {
           <meta name="description" content={blog.metadescription}></meta>
         </Head>
         <header>
-            <Nav categories=categories/>
+            <Nav categories={categories}/>
         </header>
         
         <main className={styles.main}>
