@@ -1,5 +1,7 @@
 import styles from '../styles/nav.module.scss'
 
+import Link from 'next/link';
+
 export default function Nav({ categories }) {
     return (
         <nav className={styles.nav}>

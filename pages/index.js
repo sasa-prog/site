@@ -4,6 +4,10 @@ import { client } from "../libs/client";
 import styles from "../styles/Home.module.scss";
 
 import Nav from '../components/Nav';
+import ConvertDate from '../components/convert-date'
+
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faClock} from '@fortawesome/free-regular-svg-icons';
 
 //SSG
 export const getStaticProps = async () => {
@@ -37,7 +41,7 @@ export default function Home({ blog,categories }) {
                 <a href="">
                     <img src={blog.thumbnail.url} with="320" height="240" className={styles.thumbnailBlock}/><br/>
                     <h4 className={styles.thumbnailTitle}>{blog.title}</h4><br/>
-                    <span>{blog.publishedAt}</span>
+                    <span className={styles.publichedAt}><FontAwesomeIcon icon={faClock} size="lg" color="#aaaaaa" /><ConvertDate dateISO={blog.publishedAt} /></span>
                 </a>
               </Link>
             </article>

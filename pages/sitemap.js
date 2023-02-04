@@ -1,4 +1,4 @@
-import {client} from "../../libs/client"
+import {client} from "../libs/client"
 
 
 export const getStaticProps = async () => {
@@ -11,7 +11,7 @@ export const getStaticProps = async () => {
     };
 };
 
-class post {
+class Post {
     id = "";
     publishedAt = "";
 
@@ -47,7 +47,7 @@ function generateSitemap(posts, location){
 export default function sitemap({ blogs }) {
     let posts = new Array()
     blogs.map(blog =>{
-        const post = new post(blog.id, blog.publishedAt)
+        const post = new Post(blog.id, blog.publishedAt)
         posts.push(post)
     })
 

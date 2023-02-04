@@ -2,6 +2,8 @@ import Link from "next/link";
 import { client } from "../../libs/client";
 import styles from "../../styles/Home.module.scss";
 import Head from "next/head";
+
+import Nav from '../../components/Nav';
 //SSG
 export const getStaticProps = async (context) => {
   const id = context.params.id;
@@ -35,24 +37,9 @@ export default function BlogId({ blog ,categories}) {
           <title>{blog.title} -SASA-Blog</title>
           <meta name="description" content={blog.metadescription}></meta>
         </Head>
-        <nav className={styles.nav}>
-        <ul className={styles.ul}>
-          <li className={styles.li}>
-            <Link href="/">
-              <a href="" className={styles.a}>ホーム</a>
-            </Link>
-          </li>
-          {categories.map((category) => (
-            <div className={styles.liwrapper} key={category.id}>
-              <li className={styles.li}>
-                <Link href={`/category/${category.id}`}> 
-                  <a href="" className={styles.a}>{category.name}</a>
-                </Link>
-              </li>
-            </div>
-          ))}
-        </ul>
-      </nav>
+        <header>
+            <Nav />
+        </header>
         
         <main className={styles.main}>
             <h1 className={styles.title}>{blog.title}</h1>
