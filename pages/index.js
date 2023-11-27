@@ -38,11 +38,9 @@ export default function Home({ blog,categories }) {
         
             <article className={styles.postCard} key={blog.id}>
               <Link href={`blog/${blog.id}`} >
-                <a href="">
                     <img src={blog.thumbnail.url} with="320" height="240" className={styles.thumbnailBlock}/><br/>
                     <h4 className={styles.thumbnailTitle}>{blog.title}</h4><br/>
                     <span className={styles.publichedAt}><FontAwesomeIcon icon={faClock} size="lg" color="#aaaaaa" /><ConvertDate dateISO={blog.publishedAt} /></span>
-                </a>
               </Link>
             </article>
         

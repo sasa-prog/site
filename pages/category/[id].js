@@ -3,6 +3,7 @@ import Link from "next/link";
 import {client} from "../../libs/client";
 import Article from "../../libs/articleBlog";
 import styles from "../../styles/Home.module.scss";
+import Nav from "../../components/Nav";
 
 //SSG
 export const getStaticProps = async (context) => {
@@ -13,7 +14,7 @@ export const getStaticProps = async (context) => {
     return {
         props: {
             category1:data,
-            categories: data2,
+            categories: data2.contents,
 			blogs: data3,
         },
     }
@@ -39,33 +40,19 @@ export default function CategoryId({ category1, categories, blogs }) {
 	if (categoriedBlog.length == 0) {
 		isEmpty = true;
 	}
-    
     return (
         <div>
-	<Head>
-	    <title>{category1.name} -SASA-Blog</title>
-	</Head>
-	<nav className={styles.nav}>
-          	    <ul className={styles.ul}>
-          	        <li className={styles.li}>
-            	            <Link href="/">
-              		<a href="" className={styles.a}>ホーム</a>
-            	            </Link>
-          	        </li>
-          	        {categories.contents.map((category) => (
-            	            <li key={category.id} className={styles.li}>
-              		<Link href={`/category/${category.id}`}>
-                	    <a href="" className={styles.a}>{category.name}</a>
-              		</Link>
-            	        </li>
-          	        ))}
-        	    </ul>
-               </nav>
-	
-	<main className={styles.main}>
-	    <h1 className={styles.title}>{category1.name}</h1>
-		<Article categoriedBlog={categoriedBlog} isEmpty={isEmpty}></Article>
-	</main>
+			<Head>
+	    		<title>{category1.name} -SASA-Blog</title>
+			</Head>
+			<header>
+				<Nav categories={categories}/>
+			</header>
+			
+			<main className={styles.main}>
+		    	<h1 className={styles.title}>{category1.name}</h1>
+				<Article categoriedBlog={categoriedBlog} isEmpty={isEmpty}></Article>
+			</main>
         </div>
     );
 };

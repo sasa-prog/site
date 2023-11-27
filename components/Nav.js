@@ -7,15 +7,11 @@ export default function Nav({ categories }) {
         <nav className={styles.nav}>
           <ul className={styles.ul}>
             <li className={styles.li}>
-              <Link href="/">
-                <a href="" className={styles.a}>ホーム</a>
-              </Link>
+              <Link href="/" className={styles.a}>ホーム</Link>
             </li>
             {categories.map((category) => (
               <li key={category.id} className={styles.li}>
-                <Link href={`/category/${category.id}`}>
-                  <a href="" className={styles.a}>{category.name}</a>
-                </Link>
+                <Link href={`/category/${category.id}`} className={styles.a}>{category.name}</Link>
               </li>
             ))}
           </ul>
